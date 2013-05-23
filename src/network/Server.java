@@ -147,12 +147,12 @@ public class Server {
       //throw new Exception(cause);
     }
     
-    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
       Connection c = _connection.add(ctx.channel());
       if(c != null) _events.raiseConnect(c);
     }
     
-    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
       _events.raiseDisconnect(_connection.remove(ctx.channel()));
     }
     
@@ -184,7 +184,7 @@ public class Server {
     }
     
     protected void raiseDisconnect(Connection c) {
-      for(Connect e : _connect) {
+      for(Connect e : _disconnect) {
         e.event(c);
       }
     }
