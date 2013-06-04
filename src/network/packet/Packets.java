@@ -5,19 +5,17 @@ import io.netty.buffer.ByteBuf;
 import java.util.ArrayList;
 
 public class Packets {
-  private static ArrayList<Class<?>> _packet = new ArrayList<Class<?>>();
+  private static ArrayList<Class<? extends Packet>> _packet = new ArrayList<Class<? extends Packet>>();
   
-  public static void add(Class<?> packet) {
+  public static void add(Class<? extends Packet> packet) {
     _packet.add(packet);
   }
   
   public static Packet create(int index, ByteBuf data) throws IndexOutOfBoundsException, Packet.NotEnoughDataException {
-    Class<?> packet;
-    
-    packet = _packet.get(index);
+    Class<? extends Packet> packet = _packet.get(index);
     
     try {
-      Packet p = (Packet)packet.newInstance();
+      Packet p = packet.newInstance();
       p.deserialize(data);
       return p;
     } catch(InstantiationException | IllegalAccessException e) {
