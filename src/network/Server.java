@@ -143,7 +143,7 @@ public class Server {
   
   private class Handler extends ChannelInboundMessageHandlerAdapter<Packet> {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-      System.out.println(cause);
+      cause.printStackTrace();
       //throw new Exception(cause);
     }
     
