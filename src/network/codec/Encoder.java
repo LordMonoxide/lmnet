@@ -10,9 +10,14 @@ import io.netty.handler.codec.MessageToMessageEncoder;
 public class Encoder extends MessageToMessageEncoder<Packet> {
   protected void encode(ChannelHandlerContext ctx, Packet msg, MessageBuf<Object> out) throws Exception {
     ByteBuf data = msg.serialize();
-    ByteBuf b = Unpooled.buffer(data.readableBytes() + 1);
+    int length = data != null ? data.readableBytes() : 0;
+    ByteBuf b = Unpooled.buffer(length + 1);
     b.writeByte(msg.getIndex());
-    b.writeBytes(data);
+    
+    if(data != null) {
+      b.writeBytes(data);
+    }
+    
     out.add(b);
   }
 }
