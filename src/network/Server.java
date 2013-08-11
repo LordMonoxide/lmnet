@@ -167,9 +167,9 @@ public class Server {
   }
   
   public static class Events {
-    private LinkedList<Connect> _connect    = new LinkedList<Connect>();
-    private LinkedList<Connect> _disconnect = new LinkedList<Connect>();
-    private LinkedList<Packet>  _packet     = new LinkedList<Packet>();
+    private LinkedList<Connect> _connect    = new LinkedList<>();
+    private LinkedList<Connect> _disconnect = new LinkedList<>();
+    private LinkedList<Packet>  _packet     = new LinkedList<>();
     
     public void onConnect   (Connect e) { _connect.add(e); }
     public void onDisconnect(Connect e) { _disconnect.add(e); }

@@ -131,7 +131,7 @@ public class Client {
   }
   
   public static class Events {
-    private ConcurrentLinkedDeque<Packet> _packet = new ConcurrentLinkedDeque<Packet>();
+    private ConcurrentLinkedDeque<Packet> _packet = new ConcurrentLinkedDeque<>();
     
     public void onPacket(Packet e) {
       onPacket(e, false);

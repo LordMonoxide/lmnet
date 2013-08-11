@@ -5,7 +5,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.ArrayList;
 
 public class Packets {
-  private static ArrayList<Class<? extends Packet>> _packet = new ArrayList<Class<? extends Packet>>();
+  private static ArrayList<Class<? extends Packet>> _packet = new ArrayList<>();
   
   public static void add(Class<? extends Packet> packet) {
     _packet.add(packet);
