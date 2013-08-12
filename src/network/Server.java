@@ -113,7 +113,7 @@ public class Server {
   }
   
   public class Connections {
-    private ConcurrentHashMap<Integer, Connection> _connection = new ConcurrentHashMap<Integer, Connection>();
+    private ConcurrentHashMap<Integer, Connection> _connection = new ConcurrentHashMap<>();
     
     protected Connections() { }
     
